@@ -1,0 +1,10 @@
+{
+    "files.encoding": "gbk",
+    "python.analysis.extraPaths": [
+        "utils"
+    ],
+    "files.associations": {
+        "ostream": "cpp",
+        "iostream": "cpp"
+    }
+}
