@@ -4,26 +4,26 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                // "c:/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++",
-                // "c:/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++/mingw32",
-                // "c:/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++/backward",
-                // "c:/mingw/bin/../lib/gcc/mingw32/6.3.0/include"
-                "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++",
-                "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32",
-                "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward",
-                "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include",
-                "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed",
-                "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/../../../../x86_64-w64-mingw32/include"
+                "c:/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++",
+                "c:/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++/mingw32",
+                "c:/mingw/bin/../lib/gcc/mingw32/6.3.0/include/c++/backward",
+                "c:/mingw/bin/../lib/gcc/mingw32/6.3.0/include"
+                // "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++",
+                // "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32",
+                // "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward",
+                // "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include",
+                // "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed",
+                // "D:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/7.3.0/../../../../x86_64-w64-mingw32/include"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            // "compilerPath": "C:\\MinGW\\bin\\gcc.exe",
-            "compilerPath": "D://mingw64//bin//gcc.exe",
+            "compilerPath": "C:\\MinGW\\bin\\gcc.exe",
+            // "compilerPath": "D://mingw64//bin//gcc.exe",
             "cStandard": "c11",
-            "cppStandard": "gnu++14",
+            "cppStandard": "c++11",
             "intelliSenseMode": "windows-gcc-x86"
         }
     ],

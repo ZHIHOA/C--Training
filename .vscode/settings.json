@@ -5,6 +5,8 @@
     ],
     "files.associations": {
         "ostream": "cpp",
-        "iostream": "cpp"
-    }
+        "iostream": "cpp",
+        "*.tcc": "cpp"
+    },
+    "code-runner.runInTerminal": true
 }
