@@ -1,42 +1,44 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-import xml.etree.ElementTree as ET
 import numpy as np
+from opendrivepy.opendriveparser import OpenDriveParser
 
 
-def load_opendrive(file_path):
-    # 解析OpenDRIVE文件
-    tree = ET.parse(file_path)
-    root = tree.getroot()
+def load_opendrive_map(filename):
+    """读取opendrive地图文件"""
+    parser = OpenDriveParser(filename)
+    return parser.opendrive_dict
+
+
+def calculate_reference_line(centerline, lane_width, lane_count):
+    """根据道路中心线和车道宽度计算车道中心线"""
+    # 将中心线向左和向右移动，得到车道中心线
+    left_shift = lane_width / 2
+    right_shift = -lane_width / 2
+    reference_lines = []
+    for i in range(lane_count):
+        shift = i * (left_shift + right_shift)
+        reference_line = centerline + np.array([shift, 0])
+        reference_lines.append(reference_line)
+    return reference_lines
+
+
+def generate_reference_line(opendrive_map):
+    """生成参考线"""
+    # 从opendrive地图中提取道路信息
+    road_network = opendrive_map['road_network']
+    # 遍历每一条道路
+    for road_id, road in road_network.items():
+        # 遍历每一个车道
+        for lane_id, lane in road['lanes'].items():
+            # 获取道路中心线
+            centerline = lane['central_path']
+            # 获取车道宽度
+            lane_width = lane['width']
+            # 获取车道数量
+            lane_count = lane['count']
+            # 根据道路中心线和车道宽度计算车道中心线
+            reference_lines = calculate_reference_line(centerline, lane_width, lane_count)
+            # 可以将参考线存储到文件中或者进行后续处理
+            # 这里只是简单的打印出来
+            for ref_line in reference_lines:
+                print(f'Reference line for {road_id} {lane_id}: {ref_line}')
     
-# 遍历所有道路
-    for road in root.findall('./road'):
-        road_id = road.get('id')
-        road_name = road.get('name')
-        road_length = float(road.get('length'))
-        # 遍历所有几何形状
-        for geometry in road.findall('./planView/geometry'):
-            geometry_s = float(geometry.get('s'))
-            geometry_x = float(geometry.get('x'))
-            geometry_y = float(geometry.get('y'))
-            geometry_hdg = float(geometry.get('hdg'))
-            geometry_length = float(geometry.get('length'))
-            # 如果几何形状是一条直线
-            if geometry.find('./line') is not None:
-                # 计算起点和终点
-                start_point = np.array([geometry_x, geometry_y])
-                end_point = start_point + geometry_length * np.array([np.cos(geometry_hdg), np.sin(geometry_hdg)])
-                # 生成参考线点
-                ref_points = [start_point, end_point]
-                # 连接相邻道路
-                # TODO
-                # 优化参考线
-                # TODO
-                # 导出参考线
-                # TODO
-        print(road_id)
-
-if __name__=='__main__':
-    file = "./ringroad.xodr"
-    load_opendrive(file)
