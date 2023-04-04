@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 import numpy as np
 from scipy.interpolate import CubicSpline
+from scipy.interpolate import interp1d
+import opendrivepy.utils.opendrive_utils as opendrive_utils
 
 # ½âÎöOpenDRIVEÎÄ¼ş
 def parse_opendrive(file_path):
